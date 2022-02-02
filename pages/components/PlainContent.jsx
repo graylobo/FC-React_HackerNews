@@ -4,14 +4,16 @@ import styled from "@emotion/styled";
 const Layout = styled.div`
   padding: 10px;
   width: 335px;
-  height: 120px;
   border-radius: 20px;
   background-color: white;
-  box-shadow: 5px 5px 5px 5px gray;
-  font-family: "Roboto", sans-serif;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  font-family: "Roboto";
   box-sizing: border-box;
   & {
     margin-bottom: 15px;
+  }
+  .container {
+    margin-left: 9px;
   }
   .title {
     font-size: 18px;
@@ -33,11 +35,19 @@ const Layout = styled.div`
 export default function PlainFeed(props) {
   return (
     <Layout color={props.color}>
-      <p className="title">{props.content.title}</p>
-      <span className="points">{props.content.points}</span>
-      <span className="comments">{props.content.comments_count}</span>
-      <span>{props.content.user}</span>
-      <span>{props.content.time_ago}</span>
+      <div className="container">
+        <p className="title">{props.content.title}</p>
+
+        <span className="points">
+          <span className="material-icons">favorite</span>
+          {props.content.points}
+        </span>
+
+        <span className="comments">
+          <span className="material-icons">comment</span>
+          {props.content.comments_count}
+        </span>
+      </div>
     </Layout>
   );
 }
