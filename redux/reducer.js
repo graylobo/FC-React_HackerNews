@@ -8,31 +8,31 @@ async function getData() {
   const jobs = await axios.get("https://api.hnpwa.com/v0/jobs/1.json");
   const categories = [
     {
-      name: "news",
+      name: "NEWS",
       info: "Find out most hot issues",
       data: news,
       color: "#FD6106",
     },
     {
-      name: "newest",
+      name: "NEWEST",
       info: "Fast, Fresh, Fashionable",
       data: newest,
       color: "#7B61FF",
     },
     {
-      name: "ask",
+      name: "ASK",
       info: "Ask and get fresh informations",
       data: ask,
       color: "#DB00FF",
     },
     {
-      name: "show",
+      name: "SHOW",
       info: "Share and grow together",
       data: show,
       color: "#69A075",
     },
     {
-      name: "jobs",
+      name: "JOBS",
       info: "Your new possibility",
       data: jobs,
       color: "#FEBB10",

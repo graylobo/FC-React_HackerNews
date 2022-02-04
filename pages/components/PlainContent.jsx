@@ -22,6 +22,7 @@ const Layout = styled.div`
 
   span {
     margin-right: 10px;
+    font-size: 13px;
   }
 
   .points {

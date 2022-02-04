@@ -1,4 +1,7 @@
 
+body{
+    margin :0
+}
 .comment-person{
     margin-top: 10px;
     color:#FE8C10;
@@ -11,4 +14,8 @@
     color:#4D4D4D;
     font-size: 14px;
     font-weight: 700;
+    
+}
+.container-comment{
+    border-bottom: #E8E8ED 1px solid;
 }

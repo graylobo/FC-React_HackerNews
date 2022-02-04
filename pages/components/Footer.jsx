@@ -5,23 +5,23 @@ export default function Footer() {
     <div className="container">
       <div>
         <span className="material-icons">thumb_up</span>
-        <div>top</div>
+        <div>Top</div>
       </div>
       <div>
         <span className="material-icons">lightbulb</span>
-        <div>top</div>
+        <div>New</div>
       </div>
       <div>
         <span className="material-icons">question_mark</span>
-        <div>top</div>
+        <div>Ask</div>
       </div>
       <div>
         <span className="material-icons">edit</span>
-        <div>top</div>
+        <div>Show</div>
       </div>
       <div>
         <span className="material-icons">people</span>
-        <div>top</div>
+        <div>Jobs</div>
       </div>
       <style jsx>{`
         .container {

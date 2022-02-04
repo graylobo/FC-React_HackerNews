@@ -5,23 +5,42 @@ import PlainContent from "./PlainContent";
 export default function Feed({ name, info, data, color }) {
   return (
     <div className="container">
-      <CategoryHeader
-        name={name}
-        info={info}
-        color={color}
-        data={data}
-      ></CategoryHeader>
-      {data.data.map((e, i) => {
-        return i < 5 ? (
-          <Link href={"/components/detail/ContentPage"}>
-            <PlainContent key={i} content={e} color={color}></PlainContent>
-          </Link>
-        ) : null;
-      })}
+      <div className="container-box">
+        <CategoryHeader
+          name={name}
+          info={info}
+          color={color}
+          data={data}
+        ></CategoryHeader>
+        <div className="container-content">
+          {data.data.map((e, i) => {
+            console.log(e);
+            return i < 5 ? (
+              <Link href={`/components/detail/ContentPage/${name}/${e.id}`}>
+                <a>
+                  <PlainContent
+                    key={i}
+                    content={e}
+                    color={color}
+                  ></PlainContent>
+                </a>
+              </Link>
+            ) : null;
+          })}
+        </div>
+      </div>
 
       <style jsx>{`
         .container {
-          background-color: #f2f2f2;
+          overflow: auto;
+        }
+        .container-box {
+          margin-top: 20px;
+          margin-left: 10px;
+        }
+        a {
+          text-decoration: none;
+          color: black;
         }
       `}</style>
     </div>

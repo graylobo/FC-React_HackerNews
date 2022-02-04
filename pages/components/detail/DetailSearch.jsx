@@ -5,7 +5,6 @@ const Layout = styled.div`
   border-bottom: solid #ff6600 1px;
   position: relative;
   height: 50px;
-  margin-bottom: 20px;
   i {
     margin-top: 5px;
     color: orange;

@@ -13,12 +13,18 @@ export default function Home() {
   useEffect(async () => {
     setCategories(await state.data);
   });
-
   return (
-    <div>
+    <div className="container">
       {categories.map((e) => {
         return <Feed key={e.name} {...e}></Feed>;
       })}
+      <style jsx>
+        {`
+          .container {
+            background-color: #f2f2f2;
+          }
+        `}
+      </style>
     </div>
   );
 }

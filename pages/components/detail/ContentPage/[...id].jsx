@@ -7,7 +7,7 @@ function makeComments(comments, count = 0) {
     for (let i = 0; i < comments.length; i++) {
       commentString.push(
         `
-        <div style="padding-left:${count * 20}px;">
+        <div class="container-comment" style="padding-left:${count * 20}px;">
         ${
           count === 0
             ? `<span class="material-icons comment-person">person</span>`
@@ -15,7 +15,6 @@ function makeComments(comments, count = 0) {
         subdirectory_arrow_right
         </span>`
         }
-        
           <span class="comment-user">${comments[i].user}</span>
           <div>${comments[i].content}</div>
         </div>
@@ -27,7 +26,7 @@ function makeComments(comments, count = 0) {
       }
     }
   }
-  return commentString;
+  return commentString.join("");
 }
 
 export default function ContentPage() {
@@ -40,9 +39,9 @@ export default function ContentPage() {
       const json = await res.json();
       setContent(json);
     }, []);
-    const ttt = makeComments(content.comments);
+    const comments = makeComments(content.comments);
     return (
-      <div>
+      <div className="container">
         <div className="title">{content.title}</div>
         <div>
           <span className="time_ago">{content.time_ago}</span>
@@ -55,7 +54,10 @@ export default function ContentPage() {
           }
         </div>
         <div className="comments_count">{content.comments_count} commments</div>
-        <div className="comments" dangerouslySetInnerHTML={{ __html: ttt }}>
+        <div
+          className="comments"
+          dangerouslySetInnerHTML={{ __html: comments }}
+        >
           {/* {content.comments ?? content.comments.map((e) => <div>{e}</div>)} */}
         </div>
         <style jsx>{`
@@ -78,10 +80,12 @@ export default function ContentPage() {
             margin-top: 30px;
             color: gray;
           }
+          .container {
+          }
         `}</style>
       </div>
     );
-  } catch {
-    return <div>error</div>;
+  } catch (e) {
+    return <div>Error: </div>;
   }
 }

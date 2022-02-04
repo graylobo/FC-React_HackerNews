@@ -23,11 +23,22 @@ function _app({ Component, pageProps }) {
         ></link>
       </Head>
       <DetailSearch></DetailSearch>
-      <Component {...pageProps}></Component>
+      <div className="main-content">
+        <div className="content-box">
+          <Component className="asdasd" {...pageProps}></Component>
+        </div>
+      </div>
       <Footer></Footer>
+
       <style jsx>{`
         .container {
-          width: 312px;
+          width: 375px;
+          margin-left: 500px;
+        }
+        .main-content {
+          height: 600px;
+          overflow-x: hidden;
+          /* overflow: auto; */
         }
       `}</style>
     </div>
