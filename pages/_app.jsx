@@ -22,13 +22,13 @@ function _app({ Component, pageProps }) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         ></link>
       </Head>
-      <DetailSearch></DetailSearch>
+      {/* <DetailSearch></DetailSearch> */}
+      <Footer></Footer>
       <div className="main-content">
         <div className="content-box">
-          <Component className="asdasd" {...pageProps}></Component>
+          <Component {...pageProps}></Component>
         </div>
       </div>
-      <Footer></Footer>
 
       <style jsx>{`
         .container {
@@ -38,7 +38,10 @@ function _app({ Component, pageProps }) {
         .main-content {
           height: 600px;
           overflow-x: hidden;
-          /* overflow: auto; */
+        }
+        ::-webkit-scrollbar {
+          width: 0; /* Remove scrollbar space */
+          background: transparent; /* Optional: just make scrollbar invisible */
         }
       `}</style>
     </div>

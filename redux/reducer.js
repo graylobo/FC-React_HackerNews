@@ -1,3 +1,4 @@
+import { combineReducers } from "redux";
 import axios from "axios";
 
 async function getData() {
@@ -47,7 +48,6 @@ const dataState = {
 const dataReducer = (state = dataState, action) => {
   switch (action.type) {
     case "some":
-      console.log(action.payload);
       return state;
 
     default:
@@ -55,4 +55,18 @@ const dataReducer = (state = dataState, action) => {
   }
 };
 
-export default dataReducer;
+const userData = {
+  data: {},
+};
+
+const userDataReducer = (state = userData, action) => {
+  switch (action.type) {
+    case "user_data":
+      state = action.payload;
+      return state;
+
+    default:
+      return state;
+  }
+};
+export default combineReducers({ dataReducer, userDataReducer });

@@ -14,15 +14,13 @@ export default function Feed({ name, info, data, color }) {
         ></CategoryHeader>
         <div className="container-content">
           {data.data.map((e, i) => {
-            console.log(e);
             return i < 5 ? (
-              <Link href={`/components/detail/ContentPage/${name}/${e.id}`}>
+              <Link
+                key={i}
+                href={`/components/detail/ContentPage/${name}/${e.id}`}
+              >
                 <a>
-                  <PlainContent
-                    key={i}
-                    content={e}
-                    color={color}
-                  ></PlainContent>
+                  <PlainContent content={e} color={color}></PlainContent>
                 </a>
               </Link>
             ) : null;

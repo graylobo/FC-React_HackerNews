@@ -11,7 +11,7 @@ export default function Home() {
   // 주제별 상태를 담는 배열
   const [categories, setCategories] = useState([]);
   useEffect(async () => {
-    setCategories(await state.data);
+    setCategories(await state.dataReducer.data);
   });
   return (
     <div className="container">

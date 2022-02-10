@@ -3,41 +3,48 @@ import React, { useEffect, useState } from "react";
 import DetailCategoryName from "../DetailCategoryName";
 import DetailPage from "../DetailPage";
 import DetailFooter from "../DetailFooter";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
+import Modal from "./Modal";
+
 export default function Category() {
+  const dispatch = useDispatch();
+  const [show, setShow] = useState({ user: "", show: false }); // 유저정보 팝업 노출여부
+  const [userInfo, setUserInfo] = useState({});
   const router = useRouter();
   const categoryData = useSelector((s) => s);
   const [current, setCurrent] = useState({});
   const { category } = router.query;
   useEffect(async () => {
-    const data = await categoryData.data;
+    const data = await categoryData.dataReducer.data;
     setCurrent(data.find((e) => e.name === category));
   });
+  useEffect(async () => {
+    if (show.user) {
+      const res = await fetch(
+        `https://hacker-news.firebaseio.com/v0/user/${show.user}.json?print=pretty`
+      );
+      const data = await res.json();
+      setUserInfo(data);
+      dispatch({ type: "user_data", payload: data });
+    }
+  }, [show]);
   return (
     <div className="container">
       <div className="category">{category}</div>
-      {current?.data?.data.map((e) => (
-        <Link
-          href={`/components/detail/ContentPage/${category}/${e.id}`}
-          key={e.id}
-        >
-          <a>
-            <DetailPage {...e}></DetailPage>
-          </a>
-        </Link>
+      <Modal {...userInfo} show={show} setShow={setShow}></Modal>
+      {current?.data?.data.map((e, i) => (
+        <DetailPage key={i} {...e} setShow={setShow}></DetailPage>
       ))}
+      
       <style jsx>{`
         .category {
           color: #ff6600;
           font-size: 36px;
           font-weight: bold;
           margin-bottom: 10px;
-          border-bottom: solid gray 1px;
-        }
-        a {
-          text-decoration: none;
-          color: inherit;
+          border-bottom: solid #c8c8c8 1px;
+          
         }
       `}</style>
     </div>
