@@ -5,7 +5,11 @@ import { useSelector } from "react-redux";
 
 function toggleClass(e) {
   const elem = document.getElementsByClassName("category-item");
+  const elem2 = document.getElementsByClassName("category-text");
   for (let item of elem) {
+    item.classList.remove("active");
+  }
+  for (let item of elem2) {
     item.classList.remove("active");
   }
   e.target.classList.add("active");
@@ -21,8 +25,8 @@ export default function Footer() {
             toggleClass(e);
           }}
         >
-          {/* <span className="material-icons">thumb_up</span> */}
-          Top
+          <img src="top.png" alt="" />
+          <span className="category-text">Top</span>
         </div>
       </Link>
       <Link href={`/components/detail/DetailFeed/NEWEST`}>
@@ -33,7 +37,8 @@ export default function Footer() {
           }}
         >
           {/* <span className="material-icons">lightbulb</span> */}
-          New
+          <img src="new.png" alt="" />
+          <span className="category-text">New</span>
         </div>
       </Link>
       <Link href={`/components/detail/DetailFeed/ASK`}>
@@ -44,7 +49,8 @@ export default function Footer() {
           }}
         >
           {/* <span className="material-icons">question_mark</span> */}
-          Ask
+          <img src="ask.png" alt="" />
+          <span className="category-text">Ask</span>
         </div>
       </Link>
       <Link href={`/components/detail/DetailFeed/SHOW`}>
@@ -55,7 +61,8 @@ export default function Footer() {
           }}
         >
           {/* <span className="material-icons">edit</span> */}
-          Show
+          <img src="show.png" alt="" />
+          <span className="category-text">Shows</span>
         </div>
       </Link>
       <Link href={`/components/detail/DetailFeed/JOBS`}>
@@ -66,7 +73,8 @@ export default function Footer() {
           }}
         >
           {/* <span className="material-icons">people</span> */}
-          Jobs
+          <img src="jobs.png" alt="" />
+          <span className="category-text">Jobs</span>
         </div>
       </Link>
 
@@ -75,7 +83,6 @@ export default function Footer() {
           display: flex;
           justify-content: space-between;
           border-bottom: 1px #c8c8c8 solid;
-          
         }
         .category-item {
           padding: 12px;
@@ -85,7 +92,12 @@ export default function Footer() {
         }
         .active {
           color: #fd6600;
-          border-bottom: 5px #fd6600 solid;
+        }
+        img {
+          width: 35px;
+        }
+        .category-text {
+          margin-left: 3px;
         }
       `}</style>
     </div>

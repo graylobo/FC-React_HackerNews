@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const Layout = styled.div`
   height: 124px;
@@ -55,18 +56,31 @@ const Layout = styled.div`
     color: inherit;
   }
 `;
+function getElapsedDate(unixTime) {
+  let pastDate = new Date(unixTime * 1000);
+  let nowDate = new Date();
+
+  let elapsedTime = (nowDate - pastDate) / 1000;
+  elapsedTime = Math.round(elapsedTime / 60 / 60 / 24);
+  return elapsedTime;
+}
 
 export default function DetailPage({
   title,
   domain,
   points,
   user,
+  author,
   time_ago,
   comments_count,
   id,
   setShow,
+  num_comments,
+  created_at_i,
+  objectID,
 }) {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const { category } = router.query;
 
   return (
@@ -80,7 +94,10 @@ export default function DetailPage({
         </div>
       )}
 
-      <Link href={`/components/detail/ContentPage/${category}/${id}`} key={id}>
+      <Link
+        href={`/components/detail/ContentPage/${category}/${id || objectID}`}
+        key={id}
+      >
         <a>
           <div className="title">{title}</div>
         </a>
@@ -95,16 +112,20 @@ export default function DetailPage({
               });
             }}
           >
-            {user && <span>{user} ·</span>}
+            {user ? <span>{user} ·</span> : <span>{author} ·</span>}
           </span>
-          <span className="timeago"> {time_ago} </span>
+          <span className="timeago">
+            {time_ago || getElapsedDate(created_at_i) + "d ago"}
+          </span>
         </div>
         <div className="point-comment-box">
           <span className="points">{points} points · </span>
-          <span className="comments">{comments_count} comments</span>
+          <span className="comments">
+            {comments_count || num_comments} comments
+          </span>
           <span className="bookmark-box">
-            <span class="material-icons bookmark">bookmark_border</span>
-            <span class="material-icons more">more_horiz</span>
+            <span className="material-icons bookmark">bookmark_border</span>
+            <span className="material-icons more">more_horiz</span>
           </span>
         </div>
       </div>

@@ -22,18 +22,20 @@ function _app({ Component, pageProps }) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         ></link>
       </Head>
-      {/* <DetailSearch></DetailSearch> */}
-      <Footer></Footer>
+      <DetailSearch></DetailSearch>
       <div className="main-content">
         <div className="content-box">
           <Component {...pageProps}></Component>
         </div>
       </div>
+      <Footer></Footer>
 
       <style jsx>{`
         .container {
           width: 375px;
           margin-left: 500px;
+          border: 1px gray solid;
+          border-radius: 10px;
         }
         .main-content {
           height: 600px;

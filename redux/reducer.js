@@ -47,7 +47,7 @@ const dataState = {
 };
 const dataReducer = (state = dataState, action) => {
   switch (action.type) {
-    case "some":
+    case "category":
       return state;
 
     default:
@@ -69,4 +69,25 @@ const userDataReducer = (state = userData, action) => {
       return state;
   }
 };
-export default combineReducers({ dataReducer, userDataReducer });
+
+const searchData = {
+  data: {},
+};
+
+const searchDataReducer = (state = searchData, action) => {
+  switch (action.type) {
+    case "search":
+      if (action.payload) {
+        state = action.payload;
+      }
+      return state;
+
+    default:
+      return state;
+  }
+};
+export default combineReducers({
+  dataReducer,
+  userDataReducer,
+  searchDataReducer,
+});

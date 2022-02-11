@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Modal from "../DetailFeed/Modal";
+import Loading from "../../Loading";
 
 function makeComments(comments, count = 0) {
   const commentString = [];
@@ -36,12 +37,14 @@ export default function ContentPage() {
   const [userInfo, setUserInfo] = useState({});
   const [commentShow, setCommentShow] = useState(false);
   const [content, setContent] = useState({});
+  const [loading, setLoading] = useState(true);
   const id = router.query.id && router.query.id[1];
   useEffect(async () => {
     if (!!!router.query.id) return;
     const res = await fetch(`https://api.hnpwa.com/v0/item/${id}.json`);
     const json = await res.json();
     setContent(json);
+    setLoading(false);
   }, [router]);
   useEffect(async () => {
     if (show.user) {
@@ -55,7 +58,9 @@ export default function ContentPage() {
   try {
     const comments = makeComments(content.comments);
     if (!!!router.query.id) return <div></div>;
-
+    if (loading) {
+      return <Loading></Loading>;
+    }
     return (
       <div className="container">
         <div className="title">{content.title}</div>
@@ -124,6 +129,10 @@ export default function ContentPage() {
             cursor: pointer;
           }
           .container {
+          }
+          a {
+            text-decoration: none;
+            color: black;
           }
         `}</style>
       </div>

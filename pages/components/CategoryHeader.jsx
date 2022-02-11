@@ -10,16 +10,17 @@ const Category = styled.div`
   border-radius: 20px;
   font-family: "Roboto", sans-serif;
   margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
   .container {
     margin-left: 20px;
   }
   .categoryName {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 1000;
     color: white;
   }
   .info {
-    bottom: 10px;
     position: absolute;
     color: white;
     font-size: 13px;

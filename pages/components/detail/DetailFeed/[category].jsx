@@ -8,17 +8,26 @@ import Link from "next/link";
 import Modal from "./Modal";
 
 export default function Category() {
-  const dispatch = useDispatch();
   const [show, setShow] = useState({ user: "", show: false }); // 유저정보 팝업 노출여부
   const [userInfo, setUserInfo] = useState({});
+  const [current, setCurrent] = useState([]);
   const router = useRouter();
-  const categoryData = useSelector((s) => s);
-  const [current, setCurrent] = useState({});
+  const dispatch = useDispatch();
+  const reduxState = useSelector((s) => s);
   const { category } = router.query;
+
   useEffect(async () => {
-    const data = await categoryData.dataReducer.data;
-    setCurrent(data.find((e) => e.name === category));
+    let data = await reduxState.dataReducer.data;
+    if (category === "Search") {
+      // route가 검색결과로 들어온 경우
+      data = reduxState.searchDataReducer.hits;
+      setCurrent(data);
+    } else {
+      setCurrent(data.find((e) => e.name === category).data.data);
+    }
+    console.log(data);
   });
+
   useEffect(async () => {
     if (show.user) {
       const res = await fetch(
@@ -33,10 +42,10 @@ export default function Category() {
     <div className="container">
       <div className="category">{category}</div>
       <Modal {...userInfo} show={show} setShow={setShow}></Modal>
-      {current?.data?.data.map((e, i) => (
+      {current?.map((e, i) => (
         <DetailPage key={i} {...e} setShow={setShow}></DetailPage>
       ))}
-      
+
       <style jsx>{`
         .category {
           color: #ff6600;
@@ -44,7 +53,6 @@ export default function Category() {
           font-weight: bold;
           margin-bottom: 10px;
           border-bottom: solid #c8c8c8 1px;
-          
         }
       `}</style>
     </div>
