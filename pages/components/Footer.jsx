@@ -5,14 +5,12 @@ import { useSelector } from "react-redux";
 
 function toggleClass(e) {
   const elem = document.getElementsByClassName("category-item");
-  const elem2 = document.getElementsByClassName("category-text");
   for (let item of elem) {
     item.classList.remove("active");
   }
-  for (let item of elem2) {
-    item.classList.remove("active");
+  if (e.target.className.includes("category-item")) {
+    e.target.classList.add("active");
   }
-  e.target.classList.add("active");
 }
 
 export default function Footer() {
@@ -82,7 +80,7 @@ export default function Footer() {
         .container {
           display: flex;
           justify-content: space-between;
-          border-bottom: 1px #c8c8c8 solid;
+          border-top: 1px orange solid;
         }
         .category-item {
           padding: 12px;
@@ -95,9 +93,11 @@ export default function Footer() {
         }
         img {
           width: 35px;
+          pointer-events: none;
         }
         .category-text {
           margin-left: 3px;
+          pointer-events: none;
         }
       `}</style>
     </div>

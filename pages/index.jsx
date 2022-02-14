@@ -1,7 +1,5 @@
-import Main from "./category/Main";
 import Feed from "./components/Feed";
 import PlainContent from "./components/PlainContent";
-import Link from "next/Link";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";

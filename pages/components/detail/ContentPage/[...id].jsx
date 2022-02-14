@@ -59,7 +59,19 @@ export default function ContentPage() {
     const comments = makeComments(content.comments);
     if (!!!router.query.id) return <div></div>;
     if (loading) {
-      return <Loading></Loading>;
+      return (
+        <div className="loading">
+          <Loading></Loading>
+          <style jsx>{`
+            .loading {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 600px;
+            }
+          `}</style>
+        </div>
+      );
     }
     return (
       <div className="container">
@@ -128,6 +140,7 @@ export default function ContentPage() {
             color: gray;
             cursor: pointer;
           }
+
           .container {
           }
           a {

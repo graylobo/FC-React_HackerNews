@@ -1,12 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import DetailCategoryName from "../DetailCategoryName";
 import DetailPage from "../DetailPage";
-import DetailFooter from "../DetailFooter";
 import { useSelector, useDispatch } from "react-redux";
-import Link from "next/link";
 import Modal from "./Modal";
-
 export default function Category() {
   const [show, setShow] = useState({ user: "", show: false }); // 유저정보 팝업 노출여부
   const [userInfo, setUserInfo] = useState({});
@@ -25,7 +21,6 @@ export default function Category() {
     } else {
       setCurrent(data.find((e) => e.name === category).data.data);
     }
-    console.log(data);
   });
 
   useEffect(async () => {

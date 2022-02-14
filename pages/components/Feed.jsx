@@ -34,7 +34,7 @@ export default function Feed({ name, info, data, color }) {
         }
         .container-box {
           margin-top: 20px;
-          margin-left: 10px;
+          margin-left: 20px;
         }
         a {
           text-decoration: none;

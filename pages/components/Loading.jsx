@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from "react";
+import { BallTriangle } from "react-loader-spinner";
 export default function Loading() {
-  return <div>Loading...</div>;
+  return <BallTriangle color="#00BFFF" height={80} width={80} />;
 }

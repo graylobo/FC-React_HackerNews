@@ -20,23 +20,35 @@ export default function Modal(info) {
       >
         x
       </button>
-      <div>id: {info.id}</div>
-      <div>about: {htmlDecode(info.about)}</div>
       <div>
-        created: {date.getFullYear()}.{date.getMonth() + 1}.{date.getDate()}
+        <span className="items">id:</span> {info.id}
       </div>
-      <div>karma: {info.karma}</div>
-      <div>submitted: {info.submitted?.length}</div>
+      <div>
+        <span className="items">about: </span> 
+        {htmlDecode(info.about)}
+      </div>
+      <div>
+        <span className="items">created: </span>
+        {date.getFullYear()}.{date.getMonth() + 1}.{date.getDate()}
+      </div>
+      <div>
+        <span className="items">karma: </span>
+        {info.karma}
+      </div>
+      <div>
+        <span className="items">submitted: </span>
+        {info.submitted?.length}
+      </div>
       <style jsx>{`
         .modal-container {
-          width: 200px;
-          height: 200px;
+          width: 300px;
+          height: 300px;
           overflow-y: auto;
           padding: 10px;
           border-radius: 10px;
           position: fixed;
           margin-left: 400px;
-          background-color: #d6aa52;
+          border: 1px solid black;
           opacity: 0;
           transition: opacity 0.2s;
         }
@@ -47,6 +59,9 @@ export default function Modal(info) {
         button {
           float: right;
           cursor: pointer;
+        }
+        .items {
+          font-weight: bold;
         }
       `}</style>
     </div>

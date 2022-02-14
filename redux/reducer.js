@@ -86,8 +86,20 @@ const searchDataReducer = (state = searchData, action) => {
       return state;
   }
 };
+
+const loadingReducer = (state = true, action) => {
+  switch (action.type) {
+    case "loading":
+      return false;
+    case "finish":
+      return true;
+    default:
+      return state;
+  }
+};
 export default combineReducers({
   dataReducer,
   userDataReducer,
   searchDataReducer,
+  loadingReducer,
 });

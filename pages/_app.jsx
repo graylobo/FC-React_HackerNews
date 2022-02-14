@@ -3,7 +3,10 @@ import Footer from "./components/Footer";
 import { wrapper } from "../redux/store";
 import Head from "next/head";
 import "../styles/globals.css";
+import { useSelector } from "react-redux";
+import Loading from "./components/Loading";
 function _app({ Component, pageProps }) {
+  const state = useSelector((state) => state);
   return (
     <div className="container">
       <Head>
@@ -23,23 +26,37 @@ function _app({ Component, pageProps }) {
         ></link>
       </Head>
       <DetailSearch></DetailSearch>
-      <div className="main-content">
-        <div className="content-box">
-          <Component {...pageProps}></Component>
+      {state.loadingReducer ? (
+        <div className="main-content">
+          <div className="content-box">
+            <Component {...pageProps}></Component>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="loading-content">
+          <Loading></Loading>
+        </div>
+      )}
+
       <Footer></Footer>
 
       <style jsx>{`
         .container {
           width: 375px;
-          margin-left: 500px;
           border: 1px gray solid;
-          border-radius: 10px;
+          border-radius: 20px;
+          margin: auto;
+          margin-top: 20px;
         }
         .main-content {
           height: 600px;
           overflow-x: hidden;
+        }
+        .loading-content {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 600px;
         }
         ::-webkit-scrollbar {
           width: 0; /* Remove scrollbar space */
