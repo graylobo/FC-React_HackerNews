@@ -5,7 +5,7 @@ import Head from "next/head";
 import "../styles/globals.css";
 import { useSelector } from "react-redux";
 import Loading from "./components/Loading";
-import { ThemeProvider ,useTheme} from 'next-themes'
+import { ThemeProvider, useTheme } from "next-themes";
 
 function _app({ Component, pageProps }) {
   const state = useSelector((state) => state);
@@ -15,11 +15,7 @@ function _app({ Component, pageProps }) {
     <div className="container">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin
-        ></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
           rel="stylesheet"
@@ -31,19 +27,18 @@ function _app({ Component, pageProps }) {
       </Head>
       <DetailSearch></DetailSearch>
       <ThemeProvider>
-      {state.loadingReducer ? (
-        <div className="main-content">
-          <div className="content-box">
-            <Component {...pageProps}></Component>
+        {state.loadingReducer ? (
+          <div className="main-content">
+            <div className="content-box">
+              <Component {...pageProps}></Component>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="loading-content">
-          <Loading></Loading>
-        </div>
-      )}
+        ) : (
+          <div className="loading-content">
+            <Loading></Loading>
+          </div>
+        )}
       </ThemeProvider>
-     
 
       <Footer></Footer>
 
@@ -55,7 +50,7 @@ function _app({ Component, pageProps }) {
           margin: auto;
           margin-top: 20px;
         }
-    
+
         .main-content {
           height: 600px;
           overflow-x: hidden;
@@ -75,9 +70,8 @@ function _app({ Component, pageProps }) {
           background-color: orange;
           border-radius: 30px;
           background-clip: padding-box;
-          border:2px solid transparent;
+          border: 2px solid transparent;
         }
-      
       `}</style>
     </div>
   );
