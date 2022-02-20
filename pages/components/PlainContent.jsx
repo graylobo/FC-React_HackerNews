@@ -37,16 +37,16 @@ export default function PlainFeed(props) {
   return (
     <Layout color={props.color}>
       <div className="container">
-        <p className="title">{props.content.title}</p>
+        <p className="title">{props.content?.title}</p>
 
         <span className="points">
           <span className="material-icons">favorite</span>
-          {props.content.points}
+          {props.content?.points}
         </span>
 
         <span className="comments">
           <span className="material-icons">comment</span>
-          {props.content.comments_count}
+          {props.content?.comments_count}
         </span>
       </div>
     </Layout>

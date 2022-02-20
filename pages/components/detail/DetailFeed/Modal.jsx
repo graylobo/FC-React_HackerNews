@@ -8,10 +8,9 @@ function htmlDecode(input) {
   return doc?.documentElement.textContent;
 }
 export default function Modal(info) {
-  const [modal, setModal] = useState(false);
   const date = new Date(info.created * 1000);
   return (
-    <div className={`modal-container ${info.show.show ? "active" : ""}`}>
+    <div className={`modal-container ${info.show?.show ? "active" : ""}`}>
       <button
         className="close"
         onClick={() => {

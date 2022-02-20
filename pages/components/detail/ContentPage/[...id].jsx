@@ -43,7 +43,9 @@ export default function ContentPage() {
   const id = router.query.id && router.query.id[1];
   const state = useSelector((state) => state);
   const { theme, setTheme } = useTheme();
-  setTheme(() => (state.themeReducer === "light" ? "light" : "dark"));
+  useEffect(() => {
+    setTheme(() => (state.themeReducer === "light" ? "light" : "dark"));
+  }, [state.themeReducer]);
   useEffect(async () => {
     if (!!!router.query.id) return;
     const res = await fetch(`https://api.hnpwa.com/v0/item/${id}.json`);

@@ -16,10 +16,7 @@ export default function Category() {
   const { theme, setTheme } = useTheme();
   try {
     setTheme(() => (reduxState.themeReducer === "light" ? "light" : "dark"));
-  } catch (error) {
-    console.log("error: " + error);
-  }
-  console.log(theme);
+  } catch (error) {}
   useEffect(async () => {
     let data = await reduxState.dataReducer.data;
     if (category === "Search") {

@@ -18,7 +18,7 @@ export default function Feed({ name, info, data, color }) {
           data={data}
         ></CategoryHeader>
         <div className="container-content">
-          {data.data.map((e, i) => {
+          {data?.data.map((e, i) => {
             return i < 5 ? (
               <Link
                 key={i}
