@@ -5,8 +5,12 @@ import Head from "next/head";
 import "../styles/globals.css";
 import { useSelector } from "react-redux";
 import Loading from "./components/Loading";
+import { ThemeProvider ,useTheme} from 'next-themes'
+
 function _app({ Component, pageProps }) {
   const state = useSelector((state) => state);
+
+  // setTheme((e)=>state.themeReducer==="light"?"light":"dark")
   return (
     <div className="container">
       <Head>
@@ -26,6 +30,7 @@ function _app({ Component, pageProps }) {
         ></link>
       </Head>
       <DetailSearch></DetailSearch>
+      <ThemeProvider>
       {state.loadingReducer ? (
         <div className="main-content">
           <div className="content-box">
@@ -37,6 +42,8 @@ function _app({ Component, pageProps }) {
           <Loading></Loading>
         </div>
       )}
+      </ThemeProvider>
+     
 
       <Footer></Footer>
 
@@ -48,6 +55,7 @@ function _app({ Component, pageProps }) {
           margin: auto;
           margin-top: 20px;
         }
+    
         .main-content {
           height: 600px;
           overflow-x: hidden;
@@ -59,9 +67,17 @@ function _app({ Component, pageProps }) {
           height: 600px;
         }
         ::-webkit-scrollbar {
-          width: 0; /* Remove scrollbar space */
-          background: transparent; /* Optional: just make scrollbar invisible */
+          // width: 0; /* Remove scrollbar space */
+          // background: transparent; /* Optional: just make scrollbar invisible */
+          width: 8px;
         }
+        ::-webkit-scrollbar-thumb {
+          background-color: orange;
+          border-radius: 30px;
+          background-clip: padding-box;
+          border:2px solid transparent;
+        }
+      
       `}</style>
     </div>
   );

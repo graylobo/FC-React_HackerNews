@@ -23,7 +23,8 @@ export default function Footer() {
             toggleClass(e);
           }}
         >
-          <img src="top.png" alt="" />
+          <span className="material-icons">thumb_up</span>
+          {/* <img src="top.png" alt="" /> */}
           <span className="category-text">Top</span>
         </div>
       </Link>
@@ -34,8 +35,8 @@ export default function Footer() {
             toggleClass(e);
           }}
         >
-          {/* <span className="material-icons">lightbulb</span> */}
-          <img src="new.png" alt="" />
+          <span className="material-icons">lightbulb</span>
+          {/* <img src="new.png" alt="" /> */}
           <span className="category-text">New</span>
         </div>
       </Link>
@@ -46,8 +47,8 @@ export default function Footer() {
             toggleClass(e);
           }}
         >
-          {/* <span className="material-icons">question_mark</span> */}
-          <img src="ask.png" alt="" />
+          <span className="material-icons">question_mark</span>
+          {/* <img src="ask.png" alt="" /> */}
           <span className="category-text">Ask</span>
         </div>
       </Link>
@@ -58,8 +59,8 @@ export default function Footer() {
             toggleClass(e);
           }}
         >
-          {/* <span className="material-icons">edit</span> */}
-          <img src="show.png" alt="" />
+          <span className="material-icons">edit</span>
+          {/* <img src="show.png" alt="" /> */}
           <span className="category-text">Shows</span>
         </div>
       </Link>
@@ -70,8 +71,8 @@ export default function Footer() {
             toggleClass(e);
           }}
         >
-          {/* <span className="material-icons">people</span> */}
-          <img src="jobs.png" alt="" />
+          <span className="material-icons">people</span>
+          {/* <img src="jobs.png" alt="" /> */}
           <span className="category-text">Jobs</span>
         </div>
       </Link>
@@ -97,6 +98,10 @@ export default function Footer() {
         }
         .category-text {
           margin-left: 3px;
+          pointer-events: none;
+        }
+        .material-icons{
+          margin-left:5px;
           pointer-events: none;
         }
       `}</style>

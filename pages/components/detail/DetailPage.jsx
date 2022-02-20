@@ -122,10 +122,7 @@ export default function DetailPage({
           <span className="comments">
             {comments_count || num_comments} comments
           </span>
-          <span className="bookmark-box">
-            <span className="material-icons bookmark">bookmark_border</span>
-            <span className="material-icons more">more_horiz</span>
-          </span>
+          
         </div>
       </div>
     </Layout>

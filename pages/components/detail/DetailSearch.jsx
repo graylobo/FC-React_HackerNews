@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAsync } from "react-async";
+import { useSelector } from "react-redux";
 const Layout = styled.div`
   border-bottom: solid #ff6600 1px;
   position: relative;
@@ -39,10 +40,11 @@ const Layout = styled.div`
   }
   .time {
     float: left;
-    margin-left: 10px;
+    margin-left: 18px;
     clear: both;
     font-weight: bold;
     color: gray;
+    font-size:15px;
   }
   .logo {
     width: 20px;
@@ -51,6 +53,19 @@ const Layout = styled.div`
     margin-top: 5px;
     margin-left: 15px;
     clear: both;
+  }
+  .theme-toggle {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 10px;
+    color:orange;
+    cursor:pointer;
+  }
+  .material-icons{
+    font-size:23px;
+
   }
 `;
 async function searchByTitle(e, dispatch) {
@@ -72,6 +87,7 @@ export default function DetailSearch() {
     result: true,
     response: null,
   });
+  const reduxState = useSelector((state)=>state);
   const dispatch = useDispatch();
   useEffect(() => {
     setInterval(() => {
@@ -98,13 +114,24 @@ export default function DetailSearch() {
       <Link href={"/"}>
         <a href="">
           <img
-            src="https://jeondoh.github.io/haker-news/static/media/Logo.0f14769556901466dd1a.png"
+            src="react_logo.png"
             alt=""
             className="logo"
           />
         </a>
+       
       </Link>
+      <div className="theme-toggle" onClick={(e)=>reduxState.themeReducer==="light"?dispatch({type:"dark"}):dispatch({type:"light"})}> 
+      {reduxState.themeReducer==="light" ?<span className="material-icons ">
+light_mode
+</span>:<span className="material-icons">
+nightlight
+</span>
+}
+      
 
+      </div>
+ 
       <div className="search">
         <span>
           <i

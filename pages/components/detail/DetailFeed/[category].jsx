@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import DetailPage from "../DetailPage";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "./Modal";
+import { useTheme } from 'next-themes'
+
 export default function Category() {
   const [show, setShow] = useState({ user: "", show: false }); // 유저정보 팝업 노출여부
   const [userInfo, setUserInfo] = useState({});
@@ -11,7 +13,12 @@ export default function Category() {
   const dispatch = useDispatch();
   const reduxState = useSelector((s) => s);
   const { category } = router.query;
-
+  const { theme, setTheme } = useTheme()
+  try {
+  setTheme(()=>reduxState.themeReducer==="light" ? "light":"dark")
+    
+  } catch (error) {
+  }
   useEffect(async () => {
     let data = await reduxState.dataReducer.data;
     if (category === "Search") {

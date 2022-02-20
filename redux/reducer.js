@@ -49,7 +49,6 @@ const dataReducer = (state = dataState, action) => {
   switch (action.type) {
     case "category":
       return state;
-
     default:
       return state;
   }
@@ -97,9 +96,21 @@ const loadingReducer = (state = true, action) => {
       return state;
   }
 };
+
+const themeReducer = (state,action)=>{
+  switch (action.type) {
+    case "light":
+      return "light";
+    case "dark":
+      return "dark";
+    default:
+      return "light";
+  }
+}
 export default combineReducers({
   dataReducer,
   userDataReducer,
   searchDataReducer,
   loadingReducer,
+  themeReducer
 });

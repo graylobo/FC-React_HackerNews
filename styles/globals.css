@@ -3,19 +3,24 @@ body{
     margin :0
 }
 .comment-person{
-    margin-top: 10px;
     color:#FE8C10;
+    float:left;
+    font-size :20px;
+    margin-right:5px;
 }
 .comment-child{
-    color:#FE8C10
+    color:#FE8C10;
+    float:left;
+    font-size :20px;
+
 }
 .comment-user{
-    margin-top: 10px;
     color:#4D4D4D;
     font-size: 14px;
     font-weight: 700;
     
 }
 .container-comment{
+    margin-top:10px;
     border-bottom: #E8E8ED 1px solid;
 }
