@@ -2,7 +2,12 @@ import Link from "next/link";
 import React from "react";
 import CategoryHeader from "./CategoryHeader";
 import PlainContent from "./PlainContent";
+import { useRouter } from "next/router";
 export default function Feed({ name, info, data, color }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="container">
       <div className="container-box">
