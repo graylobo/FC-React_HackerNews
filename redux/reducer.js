@@ -97,20 +97,22 @@ const loadingReducer = (state = true, action) => {
   }
 };
 
-const themeReducer = (state,action)=>{
+const themeReducer = (state = "light", action) => {
   switch (action.type) {
     case "light":
-      return "light";
+      state = "light";
+      return state;
     case "dark":
-      return "dark";
+      state = "dark";
+      return state;
     default:
-      return "light";
+      return state;
   }
-}
+};
 export default combineReducers({
   dataReducer,
   userDataReducer,
   searchDataReducer,
   loadingReducer,
-  themeReducer
+  themeReducer,
 });

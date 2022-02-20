@@ -86,7 +86,7 @@ export default function DetailPage({
     <Layout>
       {domain && (
         <div>
-          <span class="material-icons earth">public</span>
+          <span className="material-icons earth">public</span>
           <a href={`https://${domain}`} target="_blank" className="domain">
             {domain}
           </a>

@@ -44,7 +44,7 @@ const Layout = styled.div`
     clear: both;
     font-weight: bold;
     color: gray;
-    font-size:15px;
+    font-size: 15px;
   }
   .logo {
     width: 20px;
@@ -60,12 +60,11 @@ const Layout = styled.div`
     float: left;
     margin-top: 3px;
     margin-left: 10px;
-    color:orange;
-    cursor:pointer;
+    color: orange;
+    cursor: pointer;
   }
-  .material-icons{
-    font-size:23px;
-
+  .material-icons {
+    font-size: 23px;
   }
 `;
 async function searchByTitle(e, dispatch) {
@@ -76,6 +75,7 @@ async function searchByTitle(e, dispatch) {
     );
     const json = await data.json();
     dispatch({ type: "finish" });
+    return json;
   }
 }
 
@@ -87,7 +87,7 @@ export default function DetailSearch() {
     result: true,
     response: null,
   });
-  const reduxState = useSelector((state)=>state);
+  const reduxState = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
     setInterval(() => {
@@ -100,8 +100,11 @@ export default function DetailSearch() {
   }, []);
 
   useEffect(() => {
-    dispatch({ type: "search", payload: searchData.response });
-    if (searchData.response && Object.keys(searchData.response).length !== 0) {
+    dispatch({ type: "search", payload: searchData?.response });
+    if (
+      searchData?.response &&
+      Object.keys(searchData?.response).length !== 0
+    ) {
       Router.push("/components/detail/DetailFeed/Search");
     }
   }, [searchData]);
@@ -113,25 +116,24 @@ export default function DetailSearch() {
       </span>
       <Link href={"/"}>
         <a href="">
-          <img
-            src="react_logo.png"
-            alt=""
-            className="logo"
-          />
+          <img src="react_logo.png" alt="" className="logo" />
         </a>
-       
       </Link>
-      <div className="theme-toggle" onClick={(e)=>reduxState.themeReducer==="light"?dispatch({type:"dark"}):dispatch({type:"light"})}> 
-      {reduxState.themeReducer==="light" ?<span className="material-icons ">
-light_mode
-</span>:<span className="material-icons">
-nightlight
-</span>
-}
-      
-
+      <div
+        className="theme-toggle"
+        onClick={(e) =>
+          reduxState.themeReducer === "light"
+            ? dispatch({ type: "dark" })
+            : dispatch({ type: "light" })
+        }
+      >
+        {reduxState.themeReducer === "light" ? (
+          <span className="material-icons ">light_mode</span>
+        ) : (
+          <span className="material-icons">nightlight</span>
+        )}
       </div>
- 
+
       <div className="search">
         <span>
           <i
@@ -151,7 +153,10 @@ nightlight
             className={`search-textbar ${onSearch && "active"}`}
             placeholder="search title.."
             onKeyPress={async (e) => {
-              await searchByTitle(e, dispatch);
+              setSearchData({
+                result: true,
+                response: await searchByTitle(e, dispatch),
+              });
             }}
           />
         </span>
