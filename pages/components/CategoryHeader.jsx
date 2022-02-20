@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/css";
-import Link from "next/Link";
+import Link from "next/link";
 
 const Category = styled.div`
   position: relative;
