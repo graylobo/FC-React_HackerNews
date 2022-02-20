@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Modal from "../DetailFeed/Modal";
 import Loading from "../../Loading";
-import { useTheme } from 'next-themes'
+import { useTheme } from "next-themes";
 import { useSelector } from "react-redux";
 
 function makeComments(comments, count = 0) {
@@ -43,7 +43,7 @@ export default function ContentPage() {
   const id = router.query.id && router.query.id[1];
   const state = useSelector((state) => state);
   const { theme, setTheme } = useTheme();
-  setTheme(()=>state.themeReducer==="light" ? "light":"dark")
+  setTheme(() => (state.themeReducer === "light" ? "light" : "dark"));
   useEffect(async () => {
     if (!!!router.query.id) return;
     const res = await fetch(`https://api.hnpwa.com/v0/item/${id}.json`);
@@ -100,7 +100,7 @@ export default function ContentPage() {
             new DOMParser().parseFromString(content.content, "text/html").body
               .textContent
           ) : (
-            <a href={content.url} target="_blank">
+            <a href={content.url} target="_blank" rel="noreferrer">
               {content.url}
             </a>
           )}
@@ -138,8 +138,7 @@ export default function ContentPage() {
           }
           .content {
             margin-top: 20px;
-            overflow:hidden;
-
+            overflow: hidden;
           }
           .comments_count {
             margin-top: 30px;
@@ -149,13 +148,12 @@ export default function ContentPage() {
           }
 
           .container {
-            padding:15px;
-
+            padding: 15px;
           }
-        
+
           a {
             text-decoration: none;
-            display:block;
+            display: block;
           }
         `}</style>
       </div>
